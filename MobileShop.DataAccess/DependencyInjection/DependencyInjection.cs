@@ -4,6 +4,7 @@ using MobileShop.Domain.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
+using MyImageService;
 
 namespace MobileShop.Infrastructure.DependencyInjection
 {
@@ -14,6 +15,8 @@ namespace MobileShop.Infrastructure.DependencyInjection
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     configuration.GetConnectionString("DefaultConnection")));
+
+            services.RegisterImageServices();
 
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));

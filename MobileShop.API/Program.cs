@@ -4,6 +4,8 @@ using MobileShop.API.Middleware;
 using MobileShop.Infrastructure.DependencyInjection;
 using Microsoft.Identity.Client;
 using Scalar.AspNetCore;
+using Microsoft.Extensions.FileProviders;
+using MobileShop.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +41,13 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference();
 }
 
+app.UseStaticFiles(
+    new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(Path.Combine(Environment.CurrentDirectory, "Images")),
+        RequestPath = "/Images"
+    });
+
 // MIDDLEWARE
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 app.UseMiddleware<ValidationMiddleware>();
@@ -51,4 +60,6 @@ app.MapControllers();
 
 // MAPPING ENDPOINTS
 app.MapProductEndPoints();
+app.MapImagesEndPoints();
+
 app.Run();

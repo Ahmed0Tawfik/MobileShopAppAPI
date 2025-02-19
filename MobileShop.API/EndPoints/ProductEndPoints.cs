@@ -1,6 +1,5 @@
 ﻿using MobileShop.Application;
 using MobileShop.Application.APIResponse;
-using MobileShop.Application.Auth;
 using MobileShop.Application.ProductCQ;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;

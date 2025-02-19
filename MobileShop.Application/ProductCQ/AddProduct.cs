@@ -2,6 +2,7 @@
 using MobileShop.Domain.Interfaces;
 using FluentValidation;
 using MobileShop.Domain.Models;
+using MyImageService.Interfaces;
 
 namespace MobileShop.Application.ProductCQ
 {
@@ -28,6 +29,7 @@ namespace MobileShop.Application.ProductCQ
         public class AddProductHandler : IRequestHandler<AddProductCommand, ApiResponse<ProductResponse>>
         {
             private readonly IUnitOfWork _unitOfWork;
+            private readonly IUploadFileService _uploadFileService;
             public AddProductHandler(IUnitOfWork unitOfWork)
             {
                 _unitOfWork = unitOfWork;

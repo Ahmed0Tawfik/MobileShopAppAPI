@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Ahmed0Tawfik.Services.Images" Version="1.0.0" />
     <PackageReference Include="FluentValidation" Version="11.11.0" />
   </ItemGroup>
 
